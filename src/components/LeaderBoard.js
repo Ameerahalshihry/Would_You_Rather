@@ -5,7 +5,13 @@ export class LeaderBoard extends Component {
     render() {
         return (
             <div>
-                LeaderBoard
+                {/* LeaderBoard get all user VIEW 
+                user.name
+                user.avatarURL
+                num of user.answers is obj
+                num of user.questions is array
+                score: sum 
+                display more score at top and symbol */}
             </div>
         )
     }
