@@ -1,9 +1,12 @@
-import action from '../actions/index'
+import { combineReducers } from 'redux'
+import users from './users'
+import questions from './questions'
+import {authedUser} from './authedUser'
 
-export const reducer = (state =[], action) =>
-{
-    if (action.type === 'ADD'){
-        return state
-    }
-    return state
-}
+const reducer=combineReducers({
+    authedUser,
+    questions,
+    users
+})
+
+export default reducer
