@@ -15,17 +15,19 @@ export class NewQuestion extends Component {
     }
     handleSubmit = (e) => {
     e.preventDefault()
-    const {optionOne} = this.state
-    const {optionTwo} = this.state
-    const {dispatch} = this.props
+    const {optionOne, optionTwo} = this.state
 
-    dispatch(handleAddQuestion(optionOne,optionTwo ))
+    this.props.addQuestion(optionOne, optionTwo);
+    // const {dispatch} = this.props
+
+    // dispatch(handleAddQuestion(optionOne, optionTwo ))
 
     console.log('op1 is '+ optionOne + 'op2 is '+ optionTwo);
     //todo: Add question to store
     
     this.setState({
-        [e.target.name]:''
+        optionOne: '',
+        optionTwo: ''
     });//reset input fields to empty
 
     }
@@ -58,6 +60,19 @@ export class NewQuestion extends Component {
     }
 }
 
+// function mapStateToProps({users, authedUser}){
+//     return {
+//         authedUser
+//     }
 
+// }
 
-export default connect()(NewQuestion)
+function mapDispatchToProps(dispatch) {
+        return {
+        addQuestion: (optionOne, optionTwo) => {
+            dispatch(handleAddQuestion(optionOne, optionTwo))
+        }
+        }
+    }
+
+export default connect(null, mapDispatchToProps)(NewQuestion)

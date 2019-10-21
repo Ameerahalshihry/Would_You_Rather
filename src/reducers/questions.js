@@ -12,7 +12,7 @@ export default function questions (state = {}, action){
             console.log("from questions reducer ", questions);
             return questions
         case ADD_QUESTION :
-            const {question} = action
+            const { question } = action
 
             return {
                 ...state,

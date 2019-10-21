@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
 import {Link} from 'react-router-dom'
+import QuestionsList from './QuestionsList'
+import { Redirect } from 'react-router-dom'
+
 
 class SignIn extends Component {
     state = {
@@ -15,50 +18,56 @@ class SignIn extends Component {
         }
     )
     }
-    handleClick=(e)=>{
+    handleSubmit=(e)=>{
         e.preventDefault()
         const {id} = this.state
         if (id !== ''){
             this.setState({
-                id: id,
+                id,
                 isSignIn: true
-            })
-            this.props.setAuthedUser(id)
+            })            
+            this.props.dispatch(setAuthedUser(id))
+            // this.props.dispatch(handleSetAuthedUser(id))
         }
     }
     render() {
         console.log("SIGNIN comp"+ JSON.stringify(this.props.userIds))
         console.log(this.state);
-        
+        const {users} = this.props
+        const {isSignIn} = this.state
+
+        if (isSignIn) {
+            return <Redirect to='/questionslist'/>
+        }
+
         return (
-            <div className="card col-4 mx-auto">
+            <div className="card col-5 mx-auto">
             <h3 className="card-header text-center">Welcome to the Would You Rather App!</h3>
             <div className="card-body">
-                <p className="card-text text-center">Please sign in to continue</p>
+                <p className="card-text text-center"
+                >Please sign in to continue</p>
                 <h4 className="card-title text-center">Sign In</h4>
                 <br />
-                <select className="form-control" onChange={this.handleChange}>
+                <form onSubmit={this.handleSubmit} >
+                <label>Please Select User</label>
+                <select className="form-control" value={this.state.id} onChange={this.handleChange}>
                     <option value='' disabled>Select</option>
                     {this.props.userIds.map((user) =>
-                    <option key={user} value={user}>{this.props.users[user].name}</option> )}
+                    <option key={user} value={user}>{users[user].name}</option> )}
                 </select>
                 <br />
-                <Link to='/questionsList'>
-                <button className="btn btn-primary btn-block" onClick={this.handleClick}>Sign In</button>
-                </Link>
+                <button className="btn btn-primary btn-block" type='submit' >Sign In</button>
+                </form>
             </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = ({users, authedUser}) => {  
+const mapStateToProps = ({users}) => {  
     return {
     userIds:Object.keys(users),
-    users,
-    id:authedUser
+    users
 }}
 
-
-
-export default connect(mapStateToProps, {setAuthedUser})(SignIn)
+export default connect(mapStateToProps)(SignIn)

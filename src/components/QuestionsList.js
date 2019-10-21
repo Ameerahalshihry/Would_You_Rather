@@ -12,15 +12,15 @@ import Navbar from './Navbar'
         return (
             <div>
             <Navbar />
-                <Tabs defaultActiveKey="question-list" id="uncontrolled-tab-example">
-                    <Tab eventKey="Unanswered Questions" title="Unanswered Questions">
+                <Tabs defaultActiveKey="Unanswered Questions" id="uncontrolled-tab-example">
+                    <Tab eventKey="Unanswered Questions" title="Unanswered Questions" >
                     {this.props.unansweredQuestions.map((id)=>(
-                            <Question id={id} unansweredQuestions={this.props.unansweredQuestions}/>
+                            <Question id={id} key={id} unansweredQuestions={this.props.unansweredQuestions}/>
                         ))}
                     </Tab>
                     <Tab eventKey="Answered Questions" title="Answered Questions">
                     {this.props.answeredQuestions.map((id)=>(
-                            <Question id={id} answeredQuestions={this.props.answeredQuestions} />
+                            <Question id={id} key={id} answeredQuestions={this.props.answeredQuestions} />
                         ))}
                     </Tab>
                 </Tabs>

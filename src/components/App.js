@@ -8,62 +8,36 @@ import LeaderBoard from './LeaderBoard'
 import {handleInitialData} from '../actions/shared'
 import  QuestionsList  from './QuestionsList';
 import  SignIn  from './SignIn';
-
+import Question from './Question'
+import Navbar from './Navbar'
+import LogOut from './LogOut'
 
 class App extends Component {
   componentDidMount(){
-// this.props.dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData())
   }
   render() {
     return (
       <BrowserRouter>
-      <div>
+      <div className= 'container'>
         {/* {this.props.loading === true 
         ? null
         : <Route exact path="/" component={SignIn}/>} */}
-        {/* <Route exact path="/" component={SignIn}/>  */}
-        <Route  path="/questionsList" component={QuestionsList}/>
-        <NewQuestion />
+        <Route exact path="/" component={SignIn}/> 
+        <Route  path="/questionslist" component={QuestionsList}/>
+        <Route  path="/newquestion" component={NewQuestion}/>
+        <Route  path="/question/:id" component={Question}/>
+        <Route  path="/leaderBoard" component={LeaderBoard}/>
+        <Route  path="/logout" component={LogOut}/>
+        {/* test nav bar */}
+        <Route  path="/navbar" component={Navbar}/>
+
+
+        {/* <NewQuestion /> */}
         {/* <QuestionsList /> */}
         {/* <signIn /> */}
       </div>
     </BrowserRouter>
-
-
-
-
-
-
-
-      // <BrowserRouter>
-      // <div className='container'>
-      // <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      //   {/* <a className="navbar-brand" href="#">Would You Rather..?</a>
-      //   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      //     <span className="navbar-toggler-icon"></span>
-      //   </button> */}
-      //   <div className="collapse navbar-collapse" id="navbarNav">
-      //     <ul className="navbar-nav">
-      //       <li className="nav-item active">
-      //         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
-      //       </li>
-      //       <li className="nav-item">
-      //         <Link className="nav-link" to="/new_question">New Question</Link>
-      //       </li>
-      //       <li className="nav-item">
-      //         <Link className="nav-link" to="/leader_board">Leader Board</Link>
-      //       </li>
-      //       <li className="nav-item">
-      //         <Link className="nav-link disabled" to="#" tabindex="-1" aria-disabled="true">Log out</Link>
-      //       </li>
-      //     </ul>
-      //   </div>
-      // </nav>
-      // <Route exact path="/" component={QuestionsList}/>
-      // <Route  path="/new_question" component={NewQuestion}/>
-      // <Route  path="/leader_board" component={LeaderBoard}/>
-      // </div>
-      // </BrowserRouter>
     )
   }
 }
@@ -74,8 +48,7 @@ class App extends Component {
 //   }
 // }
 
-// export default connect(mapStateToProps)(App)
+export default connect()(App)
 
-export default App
 
 
