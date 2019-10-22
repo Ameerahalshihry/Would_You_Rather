@@ -1,30 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import {Tabs, Tab} from 'react-bootstrap'
+import {Tabs, Tab, Container} from 'react-bootstrap'
 import Navbar from './Navbar'
 
 
  class QuestionsList extends Component {
+    
+
+
     render() {
         console.log(this.props);
 
         return (
-            <div>
+            <Container>
             <Navbar />
-                <Tabs defaultActiveKey="Unanswered Questions" id="uncontrolled-tab-example">
+                <Tabs defaultActiveKey="Unanswered Questions" id="uncontrolled-tab-example" >
                     <Tab eventKey="Unanswered Questions" title="Unanswered Questions" >
                     {this.props.unansweredQuestions.map((id)=>(
-                            <Question id={id} key={id} unansweredQuestions={this.props.unansweredQuestions}/>
+                            <Question id={id} key={id} unansweredQuestions={this.props.unansweredQuestions} isAnswered={false}/>
                         ))}
                     </Tab>
                     <Tab eventKey="Answered Questions" title="Answered Questions">
                     {this.props.answeredQuestions.map((id)=>(
-                            <Question id={id} key={id} answeredQuestions={this.props.answeredQuestions} />
+                            <Question id={id} key={id} answeredQuestions={this.props.answeredQuestions} isAnswered={true}/>
                         ))}
                     </Tab>
                 </Tabs>
-            </div>
+                </Container>
+
         )
     }
 }
@@ -32,8 +36,10 @@ import Navbar from './Navbar'
 const mapStateToProps = ({questions,users, authedUser}) => {  
     const user = users[authedUser]
     const answeredQuestions= Object.keys(user.answers)
-    const unansweredQuestions= user.questions.filter(questionId => !answeredQuestions.includes(questionId))
-    
+    const questionsIds = Object.keys(questions)
+    // const unansweredQuestions= user.questions.filter(questionId => !answeredQuestions.includes(questionId))
+    const unansweredQuestions= questionsIds.filter(questionId => !answeredQuestions.includes(questionId))
+
     return {
     questionIds: Object.keys(questions)
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp),

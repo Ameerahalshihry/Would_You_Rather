@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import  QuestionsList  from './QuestionsList';
+import {Image} from 'react-bootstrap'
 
 
 
@@ -16,7 +17,6 @@ class Navbar extends Component {
         console.log(this.props.user)
         console.log(this.props.authedUser)
         return (
-                <div className='container'>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <h3 className="navbar-brand" >Would You Rather..?</h3>
                 <div className="collapse navbar-collapse" id="navbarNav">
@@ -33,10 +33,10 @@ class Navbar extends Component {
                     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 ">
                     <ul class="navbar-nav ml-auto">
 
-                    <span className='navbar-text text-info'>Hello</span>
+                    <span className='navbar-text text-primary'>Hello {user.name}</span>
                     {/* show user name and avatar */}
-                    <span>{user.name}</span>
-                    <img src={user.avatarURL} className='avatar' alt=''/>
+                    <span></span>
+                    <Image src={user.avatarURL} className='avatar' alt='' style={{ width: '4rem'}} roundedCircle/>
                     <li className="nav-item" id='logout' >
                     <Link className="nav-link" to="/logout" >Log out</Link>
                     </li>
@@ -45,7 +45,6 @@ class Navbar extends Component {
                     </ul>
                 </div>
             </nav>
-            </div>
         )
     }
 }

@@ -11,6 +11,8 @@ import  SignIn  from './SignIn';
 import Question from './Question'
 import Navbar from './Navbar'
 import LogOut from './LogOut'
+import  QuestionPollResults  from './QuestionPollResults';
+import AnsweringQuestion from './AnsweringQuestion'
 
 class App extends Component {
   componentDidMount(){
@@ -28,6 +30,8 @@ class App extends Component {
         <Route  path="/newquestion" component={NewQuestion}/>
         <Route  path="/question/:id" component={Question}/>
         <Route  path="/leaderBoard" component={LeaderBoard}/>
+        <Route  path="/questionpollresults" component={QuestionPollResults}/>
+        <Route  path="/answeringquestion" component={AnsweringQuestion}/>
         <Route  path="/logout" component={LogOut}/>
         {/* test nav bar */}
         <Route  path="/navbar" component={Navbar}/>
