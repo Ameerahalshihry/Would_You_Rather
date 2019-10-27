@@ -64,43 +64,10 @@ class NewQuestion extends Component {
                         </Card.Body>
                 </Card>
         </CardColumns>
-            {/* <h3 className="card-header text-center">Create New Question</h3>
-            <div className="card-body">
-            <form onSubmit={this.handleSubmit}>
-                <div className="form-group">        
-                <p className="card-text">Complete the question:</p>
-                <h5 className="card-title">Would you rather ...</h5>
-                <input className="form-control" type="optionOne" name="optionOne" placeholder="Enter Option One Text Here" value={optionOne} onChange={this.handleChange}/>
-                <br />
-                </div>
-                <p className="card-text text-center">OR</p>
-                <div className="form-group">        
-                <input className="form-control" type="optionTwo" name="optionTwo" placeholder="Enter Option Two Text Here" value={optionTwo} onChange={this.handleChange}/>
-                <br />
-                </div>
-                <button  type="submit" className="btn btn-primary btn-block"  disabled={optionOne === '' || optionTwo === ''}>Submit</button>
-            </form>
-            </div>
-            </div> */}
-            {/* </div> */}
             </Container>   
         )
     }
 }
 
-// function mapStateToProps({users, authedUser}){
-//     return {
-//         authedUser
-//     }
-
-// }
-
-// function mapDispatchToProps(dispatch) {
-//         return {
-//         addQuestion: (optionOne, optionTwo) => {
-//             dispatch(handleAddQuestion(optionOne, optionTwo))
-//         }
-//         }
-//     }
 
 export default connect()(NewQuestion)

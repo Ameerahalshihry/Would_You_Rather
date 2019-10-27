@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import {handleAnswer} from '../actions/questions'
 import { Redirect } from 'react-router-dom'
 import { Radio, RadioGroup} from 'react-radio-group'
+import Page404 from './Page404'
 
 class AnsweringQuestion extends Component {
     state = {
@@ -27,6 +28,9 @@ class AnsweringQuestion extends Component {
     e.preventDefault()
     const { option }= this.state
     const {qid} = this.props
+    console.log(option);
+    console.log(qid);
+
         this.props.dispatch(handleAnswer(qid, option))    
         this.setState({
         isAnswered: true,
@@ -43,6 +47,7 @@ class AnsweringQuestion extends Component {
         return (
             <Container>
             <Navbar />
+            { question ? (
             <CardColumns class="card p-5 ">
                 <Card className="text-center" style={{ width: '30rem' }}  >
                 <Card.Header>{name} asks:</Card.Header>
@@ -79,7 +84,7 @@ class AnsweringQuestion extends Component {
                             <input className="form-check-input"
                             type="radio"
                             name="answerQuestion"
-                            id='optionOne'
+                            id='optionTwo'
                             value="optionTwo"
                             onChange={this.handleChange}/>
                             <label>{optionTwo}</label>
@@ -91,7 +96,8 @@ class AnsweringQuestion extends Component {
                         </Card.Body>
                     </Card>
                 
-                </CardColumns>
+                </CardColumns>)
+                : <Page404 />}
                 </Container>
         )
     }
@@ -106,7 +112,8 @@ const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
     return {
         questionDetails: formatQuestion(question, users[question.author], authedUser),
         question,
-        authedUser
+        authedUser,
+        qid
     }
         
 }

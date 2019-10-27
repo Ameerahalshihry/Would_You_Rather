@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helper'
 import {Image, Card, Button, CardColumns, Container} from 'react-bootstrap'
 import { Redirect, Link } from 'react-router-dom'
+import Page404 from './Page404'
 
 class Question extends Component {
 
@@ -36,6 +37,7 @@ class Question extends Component {
         return (
             <div className="question">
             <Container>
+            { question ? (
             <CardColumns>
                 <Card className="text-center" style={{ width: '30rem' }}  >
                 <Card.Header>{name} asks:</Card.Header>
@@ -48,16 +50,17 @@ class Question extends Component {
                         </Card.Text>
                         {
                             this.props.isAnswered? 
-                        <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:'/questionpollresults', state:{id:id}}}>View Poll</Link>
+                        <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:`/questions/${id}/results`, state:{id:id}}}>View Poll</Link>
                             :
-                            <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:'/answeringquestion', state:{id:id}}}>View Poll</Link>
+                        <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:`/questions/${id}`, state:{id:id}}}>View Poll</Link>
                         }                    
                         {/* <Button className="btn btn-primary btn-block" variant="primary" onClick={this.handleClick}>View Poll</Button> */}
 
                         </Card.Body>
                     </Card>
                 
-                </CardColumns>
+                </CardColumns>)
+                : <Page404 />}
                 </Container>
             </div>
         )

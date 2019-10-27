@@ -30,8 +30,8 @@ class App extends Component {
         <Route  path="/newquestion" component={NewQuestion}/>
         {/* <Route  path="/question/:id" component={Question}/> */}
         <Route  path="/leaderboard" component={LeaderBoard}/>
-        <Route  path="/questionpollresults" component={QuestionPollResults}/>
-        <Route  path="/answeringquestion" component={AnsweringQuestion}/>
+        <Route  exact path="/questions/:id/results" component={QuestionPollResults}/>
+        <Route  exact path="/questions/:id" component={AnsweringQuestion}/>
         <Route  path="/logout" component={LogOut}/>
         {/* test nav bar */}
         {/* <Route  path="/navbar" component={Navbar}/> */}
