@@ -27,7 +27,6 @@ class SignIn extends Component {
                 isSignIn: true
             })            
             this.props.dispatch(setAuthedUser(id))
-            // this.props.dispatch(handleSetAuthedUser(id))
         }
     }
     render() {

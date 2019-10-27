@@ -5,10 +5,9 @@ import Navbar from './Navbar'
 import {formatQuestion} from '../utils/helper'
 import { IoIosCheckmarkCircle } from "react-icons/io";
 
-export class QuestionPollResults extends Component {
+class QuestionPollResults extends Component {
     
     render() {
-        // console.log("RRRRRR"+ this.props.location.state.id);
         const {questionDetails} = this.props
         const {name, avatar, optionOne, optionTwo } = questionDetails
         const {question, authedUser} = this.props
@@ -19,11 +18,6 @@ export class QuestionPollResults extends Component {
         const optionTwoPerecent= numOfVotesOpthionTwo /totalVotes * 100
         const isOptionOneVoted = question.optionOne.votes.includes(authedUser)
         const isOptionTwoVoted = question.optionTwo.votes.includes(authedUser)
-
-        // console.log(isOptionOneVoted);
-        // console.log(isOptionTwoVoted);
-        // console.log(numOfVotesOpthionOne);
-        // console.log(numOfVotesOpthionTwo);
 
         return (
             <Container>

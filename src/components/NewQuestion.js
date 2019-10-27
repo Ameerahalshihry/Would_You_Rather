@@ -20,15 +20,9 @@ class NewQuestion extends Component {
     handleSubmit = (e) => {
     e.preventDefault()
     const {optionOne, optionTwo} = this.state
-
-    // this.props.addQuestion(optionOne, optionTwo);
     const {dispatch} = this.props
 
-    dispatch(handleAddQuestion(optionOne, optionTwo))
-
-    console.log('op1 is '+ optionOne + 'op2 is '+ optionTwo);
-    //todo: Add question to store
-    
+    dispatch(handleAddQuestion(optionOne, optionTwo))    
     this.setState({
         optionOne: '',
         optionTwo: '',

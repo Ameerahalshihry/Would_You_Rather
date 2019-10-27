@@ -45,7 +45,6 @@ const mapStateToProps = ({questions,users, authedUser}) => {
     const user = users[authedUser]
     const answeredQuestions= Object.keys(user.answers)
     const questionsIds = Object.keys(questions)
-    // const unansweredQuestions= user.questions.filter(questionId => !answeredQuestions.includes(questionId))
     const unansweredQuestions= questionsIds.filter(questionId => !answeredQuestions.includes(questionId))
 
     return {

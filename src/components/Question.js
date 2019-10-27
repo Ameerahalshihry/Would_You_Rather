@@ -6,34 +6,13 @@ import { Redirect, Link } from 'react-router-dom'
 import Page404 from './Page404'
 
 class Question extends Component {
-
-    // state={
-    //     id: this.props.id,
-    
-    // }
-    // handleClick =(e) =>{
-    //     if (this.props.isAnswered){
-    //         return <Redirect to='/questionpollresults'/>
-    //         }else
-    //         {
-    //         return <Redirect to='/answeringquestion'/>
-    //         }
-            
-    // }
     
     render() {
-            // if (this.props.isAnswered){
-            // return <Redirect to='/questionpollresults'/>
-            // }
+        
         const {question} = this.props
         const {name, avatar, optionOne } = question
-        console.log("WWWWWWw"+ this.props.id);
-        // console.log("MMMMMMMFFFF"+ this.state.id);
         const {id} = this.props
 
-        
-        // console.log("here the authedUser props" +this.props.authedUser);
-        // console.log("here the question props" +JSON.stringify(this.props.question));
         return (
             <div className="question">
             <Container>
@@ -54,7 +33,6 @@ class Question extends Component {
                             :
                         <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:`/questions/${id}`, state:{id:id}}}>View Poll</Link>
                         }                    
-                        {/* <Button className="btn btn-primary btn-block" variant="primary" onClick={this.handleClick}>View Poll</Button> */}
 
                         </Card.Body>
                     </Card>
@@ -69,7 +47,6 @@ class Question extends Component {
 
 const mapStateToProps = ({authedUser, users, questions}, {id}) => {
     const question = questions[id]
-    // const parentQuestion = questions[]
     return {
         authedUser,
         question: formatQuestion(question, users[question.author], authedUser),

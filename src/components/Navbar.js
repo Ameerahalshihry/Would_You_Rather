@@ -49,9 +49,6 @@ class Navbar extends Component {
     }
 }
 
-// Navbar.propTypes = {
-//     user: PropTypes.string,
-//   };
 function mapStateToProps ({users, authedUser}) {
     const user = users[authedUser]
     return { 

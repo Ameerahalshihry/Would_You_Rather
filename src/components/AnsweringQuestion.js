@@ -91,7 +91,6 @@ class AnsweringQuestion extends Component {
                             </div>
                         </Card.Text> 
                         <Button className="btn btn-primary btn-block" variant="primary" type='submit' disabled={this.state.option === ''} >Submit</Button>
-                        {/* <Link className="btn btn-primary btn-block" variant="primary" to='/answeringquestion' id={this.props.id}>View Poll</Link> */}
                         </Form>
                         </Card.Body>
                     </Card>
@@ -106,9 +105,7 @@ class AnsweringQuestion extends Component {
 const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
     const qid = ownProps.history.location.state.id
     const question = questions[qid]
-    // const answers = users[authedUser].answers
-    
-    
+
     return {
         questionDetails: formatQuestion(question, users[question.author], authedUser),
         question,
