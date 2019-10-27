@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import {Tabs, Tab, Container} from 'react-bootstrap'
+import {Tabs, Tab} from 'react-bootstrap'
 import Navbar from './Navbar'
 
 
- class QuestionsList extends Component {
+class QuestionsList extends Component {
     
-
-
     render() {
         console.log(this.props);
 
