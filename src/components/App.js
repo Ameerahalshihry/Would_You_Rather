@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import '../App.css';
 import {BrowserRouter, Route, Link} from 'react-router-dom'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'

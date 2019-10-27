@@ -7,7 +7,3 @@ const middleware = applyMiddleware(
     logger
 )
 export default middleware
-// export default applyMiddleware(
-//     thunk,
-//     logger
-// )
