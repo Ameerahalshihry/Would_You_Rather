@@ -49,7 +49,7 @@ class AnsweringQuestion extends Component {
             <Container>
             <Navbar />
             { question ? (
-            <CardColumns class="card p-5 ">
+            <CardColumns className="card p-5 ">
                 <Card className="text-center" style={{ width: '30rem' }}  >
                 <Card.Header>{name} asks:</Card.Header>
                     <Card.Body>

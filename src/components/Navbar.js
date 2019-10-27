@@ -30,8 +30,8 @@ class Navbar extends Component {
                     <li className="nav-item" id='leaderboard'>
                         <Link className="nav-link" to="/leaderboard">Leader Board</Link>
                     </li>
-                    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 ">
-                    <ul class="navbar-nav ml-auto">
+                    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 ">
+                    <ul className="navbar-nav ml-auto">
 
                     <span className='navbar-text text-primary'>Hello {user.name}</span>
                     {/* show user name and avatar */}

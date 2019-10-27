@@ -16,7 +16,7 @@ import Navbar from './Navbar'
             
             <div>
             <Navbar />
-            <div class="card p-5"> 
+            <div className="card p-5"> 
 
             {/* <div className="card col-6 mx-auto"> */}
 

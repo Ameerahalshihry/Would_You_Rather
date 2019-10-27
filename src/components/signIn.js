@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
-import {Link} from 'react-router-dom'
-import QuestionsList from './QuestionsList'
 import { Redirect } from 'react-router-dom'
 
 
@@ -30,7 +28,7 @@ class SignIn extends Component {
         }
     }
     render() {
-        console.log("SIGNIN comp"+ JSON.stringify(this.props.userIds))
+        console.log("SIGN IN comp"+ JSON.stringify(this.props.userIds))
         console.log(this.state);
         const {users} = this.props
         const {isSignIn} = this.state

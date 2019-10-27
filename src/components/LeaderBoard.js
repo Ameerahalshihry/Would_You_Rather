@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import {Image, Card, CardColumns, Container} from 'react-bootstrap'
+import {Image, Card, CardColumns} from 'react-bootstrap'
 import Navbar from './Navbar'
 const LeaderBoard  =(props) => {
     
@@ -30,9 +30,9 @@ const LeaderBoard  =(props) => {
         {/* <div class="card p-5 col-4 mx-auto ">  */}
 
     {usersSorted.map((user) => (
-    <CardColumns class="card p-5 ">
-        <Card className="text-center" style={{ width: '30rem' }}  >
-            <Card.Header  style={{"font-size":"20px"}}>{user.name}</Card.Header> 
+    <CardColumns className ="card p-5 " key={user.id}>
+        <Card className="text-center" style={{ width: '30rem' }}   >
+            <Card.Header  style={{"fontSize":"20px"}}>{user.name}</Card.Header> 
                 <Card.Body>
                     <Image variant="left" src={user.avatar}  style={{ width: '8rem'}} roundedCircle/>
                     <br/><br/>

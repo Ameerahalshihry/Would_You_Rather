@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {BrowserRouter, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import {handleInitialData} from '../actions/shared'
@@ -9,7 +9,7 @@ import  SignIn  from './SignIn';
 import LogOut from './LogOut'
 import  QuestionPollResults  from './QuestionPollResults';
 import AnsweringQuestion from './AnsweringQuestion'
-import Page404 from './Page404';
+// import Page404 from './Page404';
 
 class App extends Component {
   componentDidMount(){

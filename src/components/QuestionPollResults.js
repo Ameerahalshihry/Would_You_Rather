@@ -22,7 +22,7 @@ class QuestionPollResults extends Component {
         return (
             <Container>
                 <Navbar />
-            <CardColumns class="card p-5 ">
+            <CardColumns className="card p-5 ">
                 <Card className="text-center" style={{ width: '30rem' }}  >
                 <Card.Header>{name} asks:</Card.Header>
                     <Card.Body>
@@ -33,7 +33,7 @@ class QuestionPollResults extends Component {
                         <Card.Title>Would you rather {optionOne} ?</Card.Title>
                         <Card.Text>
                         {isOptionOneVoted?(
-                            <span class="badge badge-light">
+                            <span className="badge badge-light">
                                 Your Vote
                             <IoIosCheckmarkCircle style={{color: 'blue'}} size={40} />
                             </span>
