@@ -33,7 +33,7 @@ class NewQuestion extends Component {
     render() {
         const {optionOne, optionTwo, isAdded} = this.state
         if (isAdded) {
-            return <Redirect to='/questionslist'/>
+            return <Redirect to='/questions'/>
         }        
         return (
         <Container>

@@ -37,13 +37,14 @@ class AnsweringQuestion extends Component {
     })
 }
     render() {
-        if (this.state.isAnswered){
-            return <Redirect to='/questionslist'/>
-
-        }
+        
         const {questionDetails} = this.props
         const {name, avatar, optionOne, optionTwo } = questionDetails
-        const {question, authedUser} = this.props
+        const {question, authedUser,qid} = this.props
+        if (this.state.isAnswered){
+            return <Redirect to='/questions'/>
+
+        }
         return (
             <Container>
             <Navbar />

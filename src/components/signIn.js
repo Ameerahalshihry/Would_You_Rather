@@ -36,7 +36,7 @@ class SignIn extends Component {
         const {isSignIn} = this.state
 
         if (isSignIn) {
-            return <Redirect to='/questionslist'/>
+            return <Redirect to='/questions'/>
         }
 
         return (

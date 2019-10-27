@@ -20,7 +20,7 @@ class App extends Component {
       <BrowserRouter>
       <div className= 'container'>
         <Route exact path="/" component={SignIn}/> 
-        <Route  path="/questionslist" component={QuestionsList}/>
+        <Route exact path="/questions" component={QuestionsList}/>
         <Route  path="/newquestion" component={NewQuestion}/>
         <Route  path="/leaderboard" component={LeaderBoard}/>
         <Route  exact path="/questions/:id/results" component={QuestionPollResults}/>
