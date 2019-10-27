@@ -5,10 +5,10 @@ import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import {handleInitialData} from '../actions/shared'
 import  QuestionsList  from './QuestionsList';
-import  SignIn  from './SignIn';
 import LogOut from './LogOut'
 import  QuestionPollResults  from './QuestionPollResults';
 import AnsweringQuestion from './AnsweringQuestion'
+import LogIn from './LogIn'
 // import Page404 from './Page404';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <BrowserRouter>
       <div className= 'container'>
-        <Route exact path="/" component={SignIn}/> 
+        <Route exact path="/" component={LogIn}/> 
         <Route exact path="/questions" component={QuestionsList}/>
         <Route  path="/newquestion" component={NewQuestion}/>
         <Route  path="/leaderboard" component={LeaderBoard}/>

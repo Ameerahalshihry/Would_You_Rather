@@ -4,7 +4,7 @@ import {setAuthedUser} from '../actions/authedUser'
 import { Redirect } from 'react-router-dom'
 
 
-class SignIn extends Component {
+class LogIn extends Component {
     state = {
         id:'',
         isSignIn:false
@@ -69,4 +69,4 @@ const mapStateToProps = ({users}) => {
     users
 }}
 
-export default connect(mapStateToProps)(SignIn)
+export default connect(mapStateToProps)(LogIn)
