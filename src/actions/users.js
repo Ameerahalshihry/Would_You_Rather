@@ -31,10 +31,3 @@ export const addAnswerToUser = (authedUser, qid, option) => {
     console.log("add Answer To User ACTION is " +  JSON.stringify( action ) );
     return action
 }
-
-// export function receiveUsers () {
-//     return {
-//         type: RECEIVE_USERS,
-//         users,
-//     }
-// }

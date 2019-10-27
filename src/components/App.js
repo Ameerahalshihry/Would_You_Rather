@@ -10,6 +10,7 @@ import  SignIn  from './SignIn';
 import LogOut from './LogOut'
 import  QuestionPollResults  from './QuestionPollResults';
 import AnsweringQuestion from './AnsweringQuestion'
+import Page404 from './Page404';
 
 class App extends Component {
   componentDidMount(){
@@ -26,6 +27,7 @@ class App extends Component {
         <Route  exact path="/questions/:id/results" component={QuestionPollResults}/>
         <Route  exact path="/questions/:id" component={AnsweringQuestion}/>
         <Route  path="/logout" component={LogOut}/>
+        {/* <Route path='/error' component={Page404}/> */}
       </div>
     </BrowserRouter>
     )

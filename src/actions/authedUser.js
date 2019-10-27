@@ -12,20 +12,6 @@ export  const setAuthedUser = (id) =>{
     
 }
 
-// export function handleSetAuthedUser (){
-//     return (dispatch, getState) => {
-//         const { authedUser } = getState()
-//         return getUsers()
-//         .then ((users) => {
-//             dispatch(setAuthedUser(users[authedUser]))
-
-//         }
-//         )
-//     }
-
-// }
-
-
 export function signOut() {
     return {
         type: SIGN_OUT

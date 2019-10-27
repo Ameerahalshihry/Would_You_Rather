@@ -64,8 +64,7 @@ export function handleAnswer (qid, option){
             dispatch(addAnswerToQuestion(authedUser, qid, option))
             dispatch(addAnswerToUser(authedUser, qid, option))
 
-        }
-        )
+        })
     }
 
 }
