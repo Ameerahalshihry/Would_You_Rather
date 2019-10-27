@@ -50,7 +50,7 @@ class Question extends Component {
                             this.props.isAnswered? 
                         <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:'/questionpollresults', state:{id:id}}}>View Poll</Link>
                             :
-                            <Link className="btn btn-primary btn-block" variant="primary" to='/answeringquestion' id={this.props.id}>View Poll</Link>
+                            <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:'/answeringquestion', state:{id:id}}}>View Poll</Link>
                         }                    
                         {/* <Button className="btn btn-primary btn-block" variant="primary" onClick={this.handleClick}>View Poll</Button> */}
 

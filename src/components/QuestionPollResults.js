@@ -6,29 +6,9 @@ import {formatQuestion} from '../utils/helper'
 import { IoIosCheckmarkCircle } from "react-icons/io";
 
 export class QuestionPollResults extends Component {
-    // state = {
-    //     isVoted : false
-    // }
-    // componentWillMount(){
-    //     const {question, authedUser} = this.props
-    //     const {isVoted} = this.state
-
-
-    //     if (question.optionOne.votes.includes(authedUser))
-    //     {
-    //         this.setState({isVoted: true})
-    //         console.log(isVoted + "YEEESOP1");
-            
-    //     }
-    //     if (question.optionTwo.votes.includes(authedUser))
-    //     {
-    //         this.setState({isVoted: true})
-    //         console.log(isVoted + "YEEESOP2");
-            
-    //     }
-    // }
+    
     render() {
-        console.log("RRRRRR"+ this.props.location.state.id);
+        // console.log("RRRRRR"+ this.props.location.state.id);
         const {questionDetails} = this.props
         const {name, avatar, optionOne, optionTwo } = questionDetails
         const {question, authedUser} = this.props
@@ -37,20 +17,18 @@ export class QuestionPollResults extends Component {
         const totalVotes = numOfVotesOpthionOne + numOfVotesOpthionTwo
         const optionOnePerecent= numOfVotesOpthionOne /totalVotes * 100
         const optionTwoPerecent= numOfVotesOpthionTwo /totalVotes * 100
-        // const {isVoted} = this.state
         const isOptionOneVoted = question.optionOne.votes.includes(authedUser)
         const isOptionTwoVoted = question.optionTwo.votes.includes(authedUser)
 
-        console.log(isOptionOneVoted);
-        console.log(isOptionTwoVoted);
-        
-        
-        console.log(numOfVotesOpthionOne);
-        console.log(numOfVotesOpthionTwo);
+        // console.log(isOptionOneVoted);
+        // console.log(isOptionTwoVoted);
+        // console.log(numOfVotesOpthionOne);
+        // console.log(numOfVotesOpthionTwo);
+
         return (
             <Container>
                 <Navbar />
-            <CardColumns>
+            <CardColumns class="card p-5 ">
                 <Card className="text-center" style={{ width: '30rem' }}  >
                 <Card.Header>{name} asks:</Card.Header>
                     <Card.Body>
@@ -66,7 +44,6 @@ export class QuestionPollResults extends Component {
                             <IoIosCheckmarkCircle style={{color: 'blue'}} size={40} />
                             </span>
                         ): ''}
-                        {/* <ProgressBar animated now={45} label={`${45}%`} style={{ width: 400, height: 30 }} /> */}
                         <br/><br/>
                         <ProgressBar animated now={optionOnePerecent} label={`${optionOnePerecent}%`} style={{ width: 400, height: 30 }} />
 
@@ -84,7 +61,7 @@ export class QuestionPollResults extends Component {
                         {isOptionTwoVoted?(
                             <span class="badge badge-light">
                                 Your Vote
-                            <IoIosCheckmarkCircle style={{color: 'blue'}} size={40} />
+                            <IoIosCheckmarkCircle style={{color: '#1E90FF'}} size={40} />
                             </span>
                         ): ''}
                         <br/><br/> 
@@ -97,6 +74,7 @@ export class QuestionPollResults extends Component {
                         </ListGroup.Item>
                         </ListGroup>
                         
+
                         </Card.Body>
                     </Card>
                 </CardColumns>
@@ -117,8 +95,5 @@ const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
         
 }
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionPollResults)
+export default connect(mapStateToProps)(QuestionPollResults)

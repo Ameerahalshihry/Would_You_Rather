@@ -1,5 +1,6 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_USER_QUESTION= 'ADD_USER_QUESTION'
+export const ADD_USER_ANSWER= 'ADD_USER_ANSWER'
 
 export const receiveUsers = (users) => {
     const action = {
@@ -20,6 +21,16 @@ export const addUserQuestion = (authedUser, questionId) => {
     return action
 }
 
+export const addAnswerToUser = (authedUser, qid, option) => {
+    const action = {
+        type: ADD_USER_ANSWER,
+        authedUser,
+        qid,
+        option
+    }
+    console.log("add Answer To User ACTION is " +  JSON.stringify( action ) );
+    return action
+}
 
 // export function receiveUsers () {
 //     return {

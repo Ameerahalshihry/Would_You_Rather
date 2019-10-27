@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, ADD_USER_QUESTION } from '../actions/users'
+import { RECEIVE_USERS, ADD_USER_QUESTION, ADD_USER_ANSWER } from '../actions/users'
 
 export default function users (state = {}, action){
     let users = {}
@@ -11,14 +11,28 @@ export default function users (state = {}, action){
             }
             console.log("from users reducer ", users);
             return users
-            case ADD_USER_QUESTION :
+        case ADD_USER_QUESTION :
+                    const {authedUser, questionId} = action
                 return {
                     ...state,
-                    [action.authedUser]:{
-                        ...state[action.authedUser],
-                        questions: state[action.authedUser].questions.concat([action.questionId])
+                    [authedUser]:{
+                        ...state[authedUser],
+                        questions: state[authedUser].questions.concat([questionId])
                     }
                 }
+        case ADD_USER_ANSWER :
+            const {option, qid} = action
+            return {
+                ...state,
+                [action.authedUser] : {
+                    ...state[action.authedUser],
+                    answers:{
+                        ...state[action.authedUser].answers,
+                        [qid]: option
+                    }
+                }
+
+            }
         default:
             return state    
     }

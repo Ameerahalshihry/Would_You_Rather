@@ -28,13 +28,13 @@ class App extends Component {
         <Route exact path="/" component={SignIn}/> 
         <Route  path="/questionslist" component={QuestionsList}/>
         <Route  path="/newquestion" component={NewQuestion}/>
-        <Route  path="/question/:id" component={Question}/>
-        <Route  path="/leaderBoard" component={LeaderBoard}/>
+        {/* <Route  path="/question/:id" component={Question}/> */}
+        <Route  path="/leaderboard" component={LeaderBoard}/>
         <Route  path="/questionpollresults" component={QuestionPollResults}/>
         <Route  path="/answeringquestion" component={AnsweringQuestion}/>
         <Route  path="/logout" component={LogOut}/>
         {/* test nav bar */}
-        <Route  path="/navbar" component={Navbar}/>
+        {/* <Route  path="/navbar" component={Navbar}/> */}
 
 
         {/* <NewQuestion /> */}

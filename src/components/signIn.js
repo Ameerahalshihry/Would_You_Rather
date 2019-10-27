@@ -41,7 +41,8 @@ class SignIn extends Component {
         }
 
         return (
-            <div className="card col-5 mx-auto">
+            <div className="CardColumns p-5 max-auto col-8">
+                <div className="Card" style={{ width: '30rem', border: 'solid gray 1px' }} >
             <h3 className="card-header text-center">Welcome to the Would You Rather App!</h3>
             <div className="card-body">
                 <p className="card-text text-center"
@@ -58,6 +59,7 @@ class SignIn extends Component {
                 <br />
                 <button className="btn btn-primary btn-block" type='submit' >Sign In</button>
                 </form>
+            </div>
             </div>
             </div>
         )

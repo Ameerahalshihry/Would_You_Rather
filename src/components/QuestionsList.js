@@ -13,8 +13,13 @@ import Navbar from './Navbar'
         console.log(this.props);
 
         return (
-            <Container>
+            
+            <div>
             <Navbar />
+            <div class="card p-5"> 
+
+            {/* <div className="card col-6 mx-auto"> */}
+
                 <Tabs defaultActiveKey="Unanswered Questions" id="uncontrolled-tab-example" >
                     <Tab eventKey="Unanswered Questions" title="Unanswered Questions" >
                     {this.props.unansweredQuestions.map((id)=>(
@@ -27,7 +32,10 @@ import Navbar from './Navbar'
                         ))}
                     </Tab>
                 </Tabs>
-                </Container>
+                {/* </div> */}
+                </div>
+                </div>
+
 
         )
     }
