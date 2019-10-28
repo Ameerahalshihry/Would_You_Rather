@@ -37,41 +37,26 @@ class AnsweringQuestion extends Component {
     })
 }
     render() {
-        
-        const {questionDetails} = this.props
-        const {name, avatar, optionOne, optionTwo } = questionDetails
-        const {question, authedUser,qid} = this.props
+        const {question, authedUser, qid, author, page404 } = this.props
+        if (page404 === true){
+        return <Redirect to ='/error'/>
+        }
         if (this.state.isAnswered){
             return <Redirect to='/questions'/>
 
-        }
+        }        
         return (
             <Container>
             <Navbar />
-            { question ? (
             <CardColumns className="card p-5 ">
                 <Card className="text-center" style={{ width: '30rem' }}  >
-                <Card.Header>{name} asks:</Card.Header>
+                <Card.Header>{author.name} asks:</Card.Header>
                     <Card.Body>
-                    <Image variant="left" src={avatar}  style={{ width: '8rem' }} roundedCircle/>
+                    <Image variant="left" src={author.avatarURL}  style={{ width: '8rem' }} roundedCircle/>
 
                         <Card.Title>Would You Rather ..</Card.Title>
                         <Form onSubmit={this.handleSubmit}>
                         <Card.Text>
-                        {/* <Form.Check
-                            type="radio"
-                            name="group1"
-                            label={optionOne}
-                            id='radio1'
-                            value="optionOne"
-                            onCheck={this.handleCheckOption}/>
-                            <Form.Check
-                            type="radio"
-                            name="group1"
-                            label={optionTwo}
-                            id='radio2'
-                            value="optionTwo"
-                            onCheck={this.handleCheckOption}/> */}
                             <div>
                             <input className="form-check-input"
                             type="radio"
@@ -79,7 +64,7 @@ class AnsweringQuestion extends Component {
                             id='optionOne'
                             value="optionOne"
                             onChange={this.handleChange}/>
-                            <label>{optionOne}</label>
+                            <label>{question.optionOne.text}</label>
                             </div>
                             <div>
                             <input className="form-check-input"
@@ -88,7 +73,7 @@ class AnsweringQuestion extends Component {
                             id='optionTwo'
                             value="optionTwo"
                             onChange={this.handleChange}/>
-                            <label>{optionTwo}</label>
+                            <label>{question.optionTwo.text}</label>
                             </div>
                         </Card.Text> 
                         <Button className="btn btn-primary btn-block" variant="primary" type='submit' disabled={this.state.option === ''} >Submit</Button>
@@ -96,8 +81,7 @@ class AnsweringQuestion extends Component {
                         </Card.Body>
                     </Card>
                 
-                </CardColumns>)
-                : <Page404 />}
+                </CardColumns>
                 </Container>
         )
     }
@@ -105,14 +89,20 @@ class AnsweringQuestion extends Component {
 
 const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
     const qid = ownProps.history.location.state.id
-    const question = questions[qid]
-
+    let question = ''
+    let author =''
+    let page404 = true
+    if (qid !== undefined){
+        question = questions[qid]
+        author=users[question.author]
+        page404= false
+    }
     return {
-        questionDetails: formatQuestion(question, users[question.author], authedUser),
         question,
         authedUser,
-        qid
-    }
-        
+        qid,
+        page404,
+        author
+    }     
 }
 export default connect(mapStateToProps)(AnsweringQuestion)
