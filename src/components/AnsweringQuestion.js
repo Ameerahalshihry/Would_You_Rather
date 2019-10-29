@@ -37,8 +37,12 @@ class AnsweringQuestion extends Component {
     })
 }
     render() {
-        const {question, authedUser, qid, author, page404 } = this.props
+        const {question, authedUser, qid, author, page404, questionsIds } = this.props
         if (page404 === true){
+        return <Redirect to ='/error'/>
+        }
+        if (!questionsIds.includes(qid)){
+            // return <Page404 />
         return <Redirect to ='/error'/>
         }
         if (this.state.isAnswered){
@@ -47,41 +51,47 @@ class AnsweringQuestion extends Component {
         }        
         return (
             <Container>
-            <Navbar />
-            <CardColumns className="card p-5 ">
-                <Card className="text-center" style={{ width: '30rem' }}  >
-                <Card.Header>{author.name} asks:</Card.Header>
-                    <Card.Body>
-                    <Image variant="left" src={author.avatarURL}  style={{ width: '8rem' }} roundedCircle/>
-
-                        <Card.Title>Would You Rather ..</Card.Title>
-                        <Form onSubmit={this.handleSubmit}>
-                        <Card.Text>
-                            <div>
-                            <input className="form-check-input"
-                            type="radio"
-                            name="answerQuestion"
-                            id='optionOne'
-                            value="optionOne"
-                            onChange={this.handleChange}/>
-                            <label>{question.optionOne.text}</label>
-                            </div>
-                            <div>
-                            <input className="form-check-input"
-                            type="radio"
-                            name="answerQuestion"
-                            id='optionTwo'
-                            value="optionTwo"
-                            onChange={this.handleChange}/>
-                            <label>{question.optionTwo.text}</label>
-                            </div>
-                        </Card.Text> 
-                        <Button className="btn btn-primary btn-block" variant="primary" type='submit' disabled={this.state.option === ''} >Submit</Button>
-                        </Form>
-                        </Card.Body>
-                    </Card>
-                
-                </CardColumns>
+                { !page404 ? 
+                <div>
+                <Navbar />
+                <CardColumns className="card p-5 ">
+                    <Card className="text-center" style={{ width: '30rem' }}  >
+                    <Card.Header>{author.name} asks:</Card.Header>
+                        <Card.Body>
+                        <Image variant="left" src={author.avatarURL}  style={{ width: '8rem' }} roundedCircle/>
+    
+                            <Card.Title>Would You Rather ..</Card.Title>
+                            <Form onSubmit={this.handleSubmit}>
+                            <Card.Text>
+                                <div>
+                                <input className="form-check-input"
+                                type="radio"
+                                name="answerQuestion"
+                                id='optionOne'
+                                value="optionOne"
+                                onChange={this.handleChange}/>
+                                <label>{question.optionOne.text}</label>
+                                </div>
+                                <div>
+                                <input className="form-check-input"
+                                type="radio"
+                                name="answerQuestion"
+                                id='optionTwo'
+                                value="optionTwo"
+                                onChange={this.handleChange}/>
+                                <label>{question.optionTwo.text}</label>
+                                </div>
+                            </Card.Text> 
+                            <Button className="btn btn-primary btn-block" variant="primary" type='submit' disabled={this.state.option === ''} >Submit</Button>
+                            </Form>
+                            </Card.Body>
+                        </Card>
+                    
+                    </CardColumns>
+                    </div>
+                : 
+                <Page404 />} 
+            
                 </Container>
         )
     }
@@ -89,10 +99,13 @@ class AnsweringQuestion extends Component {
 
 const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
     const qid = ownProps.history.location.state.id
+    const questionsIds = Object.keys(questions)
+
     let question = ''
     let author =''
     let page404 = true
-    if (qid !== undefined){
+
+    if (questionsIds.includes(qid)){
         question = questions[qid]
         author=users[question.author]
         page404= false
@@ -102,7 +115,8 @@ const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
         authedUser,
         qid,
         page404,
-        author
+        author,
+        questionsIds
     }     
 }
 export default connect(mapStateToProps)(AnsweringQuestion)

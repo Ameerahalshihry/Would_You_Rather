@@ -17,8 +17,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div className= 'container'>
       <BrowserRouter>
+      <div className= 'container'>
         <Switch>
         <Route exact path="/" component={LogIn}/> 
         <Route exact path="/questions" component={QuestionsList}/>
@@ -30,8 +30,8 @@ class App extends Component {
         <Route  component={Page404}/>
         <Redirect from='*' to="/error" />
         </Switch>
-    </BrowserRouter>
     </div>
+    </BrowserRouter>
 
     )
   }
