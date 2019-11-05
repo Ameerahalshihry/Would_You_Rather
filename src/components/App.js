@@ -18,26 +18,33 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div className= 'container'>
-        <Switch>
-        <Route exact path="/" component={LogIn}/> 
-        <Route exact path="/questions" component={QuestionsList}/>
+      <Switch>
+          {
+            this.props.notLogged 
+            ? <Route exact path="/" component={LogIn}/>
+            :
+            <React.Fragment>
+        <Route exact path="/" component={QuestionsList}/>
         <Route exact path="/newquestion" component={NewQuestion}/>
         <Route exact path="/leaderboard" component={LeaderBoard}/>
         <Route exact path="/questions/:id/results" component={QuestionPollResults}/>
         <Route exact path="/questions/:id" component={AnsweringQuestion}/>
-        <Route exact path="/logout" component={LogOut}/>
-        <Route  component={Page404}/>
+        <Route  path="/logout" component={LogOut}/>
+        </React.Fragment>
+        }
+        <Route component={Page404}/>
         <Redirect from='*' to="/error" />
-        </Switch>
-    </div>
+          </Switch>
     </BrowserRouter>
-
     )
   }
 }
-
-export default connect()(App)
+const mapStateToProps = ({authedUser}) => {
+return{
+  notLogged: authedUser === null
+}
+}
+export default connect(mapStateToProps)(App)
 
 
 

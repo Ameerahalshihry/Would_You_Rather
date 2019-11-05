@@ -20,7 +20,7 @@ class QuestionPollResults extends Component {
         const isOptionTwoVoted = question.optionTwo.votes.includes(authedUser)
 
         return (
-            <Container>
+            <div>
                 <Navbar />
             <CardColumns className="card p-5 ">
                 <Card className="text-center" style={{ width: '30rem' }}  >
@@ -72,7 +72,7 @@ class QuestionPollResults extends Component {
                         </Card.Body>
                     </Card>
                 </CardColumns>
-                </Container>
+                </div>
         )
     }
 }

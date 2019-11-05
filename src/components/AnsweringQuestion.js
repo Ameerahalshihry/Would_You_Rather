@@ -13,7 +13,7 @@ class AnsweringQuestion extends Component {
         option: '',
         isAnswered: false
     }
-
+    
     handleChange= (e) => {
         this.setState({
             option: e.target.value
@@ -36,22 +36,20 @@ class AnsweringQuestion extends Component {
         isAnswered: true,
     })
 }
+
     render() {
-        const {question, authedUser, qid, author, page404, questionsIds } = this.props
-        if (page404 === true){
-        return <Redirect to ='/error'/>
-        }
-        if (!questionsIds.includes(qid)){
-            // return <Page404 />
-        return <Redirect to ='/error'/>
+        const { authedUser, page404, questionsIds, questions,ownProps, users, qid } = this.props
+        
+        if (questions[qid] === undefined){  
+            // return <Redirect to='/error'/>
+            return <Page404/>
         }
         if (this.state.isAnswered){
-            return <Redirect to='/questions'/>
-
-        }        
+            return <Redirect to='/'/>
+        } 
+        const question = questions[qid]
+        const author=users[question.author]       
         return (
-            <Container>
-                { !page404 ? 
                 <div>
                 <Navbar />
                 <CardColumns className="card p-5 ">
@@ -88,35 +86,24 @@ class AnsweringQuestion extends Component {
                         </Card>
                     
                     </CardColumns>
-                    </div>
-                : 
-                <Page404 />} 
-            
-                </Container>
+                    </div>            
         )
     }
 }
 
 const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
-    const qid = ownProps.history.location.state.id
-    const questionsIds = Object.keys(questions)
+    const path = ownProps.history.location.pathname
+    console.log(path);
+    const  splitUrl = path.split('/');
+    console.log(splitUrl[2]);
+    const qid = splitUrl[2]
 
-    let question = ''
-    let author =''
-    let page404 = true
-
-    if (questionsIds.includes(qid)){
-        question = questions[qid]
-        author=users[question.author]
-        page404= false
-    }
     return {
-        question,
-        authedUser,
         qid,
-        page404,
-        author,
-        questionsIds
+        authedUser,
+        ownProps,
+        questions,
+        users
     }     
 }
 export default connect(mapStateToProps)(AnsweringQuestion)

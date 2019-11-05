@@ -33,10 +33,10 @@ class NewQuestion extends Component {
     render() {
         const {optionOne, optionTwo, isAdded} = this.state
         if (isAdded) {
-            return <Redirect to='/questions'/>
+            return <Redirect to='/'/>
         }        
         return (
-        <Container>
+            <div>
         <Navbar />             
         {/* <div className="card col-4 mx-auto"> */}
         <CardColumns class="card p-5 ">
@@ -58,7 +58,7 @@ class NewQuestion extends Component {
                         </Card.Body>
                 </Card>
         </CardColumns>
-            </Container>   
+        </div>
         )
     }
 }

@@ -34,7 +34,7 @@ class LogIn extends Component {
         const {isSignIn} = this.state
 
         if (isSignIn) {
-            return <Redirect to='/questions'/>
+            return <Redirect to='/'/>
         }
 
         return (

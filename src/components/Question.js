@@ -6,7 +6,12 @@ import { Redirect, Link } from 'react-router-dom'
 import Page404 from './Page404'
 
 class Question extends Component {
-    
+    // handleClick=(e) => {
+    // const id = this.props
+    // // return <Redirect to ={`/questions/${id}`} />
+    // this.props.history.push(`/questions/${id}`)
+
+    // }
     render() {
         
         const {question} = this.props
@@ -22,8 +27,8 @@ class Question extends Component {
         // }
         return (
             <div className="question">
-            { questionsIds.includes(id) ?
-            <Container>
+            {/* { questionsIds.includes(id) ? */}
+
             <CardColumns>
                 <Card className="text-center" style={{ width: '30rem' }}  >
                 <Card.Header>{name} asks:</Card.Header>
@@ -39,14 +44,15 @@ class Question extends Component {
                             this.props.isAnswered? 
                         <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:`/questions/${id}/results`, state:{id:id}}}>View Poll</Link>
                             :
-                        <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:`/questions/${id}`, state:{id:id}}}>View Poll</Link>
+                        // <Button className="btn btn-primary btn-block" variant="primary" onClick={this.handleClick}>Answer Poll</Button>
+                        
+                        <Link className="btn btn-primary btn-block" variant="primary" to={{pathname:`/questions/${id}`}}>Answer Poll</Link>
                         }  
 
                         </Card.Body>
                     </Card>
                 </CardColumns>
-                </Container>
-                : <Page404 />}
+                {/* : <Page404 />} */}
             </div>
         )
     }

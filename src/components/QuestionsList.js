@@ -41,7 +41,7 @@ class QuestionsList extends Component {
 
 const mapStateToProps = ({questions,users, authedUser}) => {  
     const user = users[authedUser]
-    const answeredQuestions= Object.keys(user.answers)
+    const answeredQuestions= Object.keys(user.answers).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
     const questionsIds = Object.keys(questions)
     const unansweredQuestions= questionsIds.filter(questionId => !answeredQuestions.includes(questionId))
 
@@ -49,7 +49,7 @@ const mapStateToProps = ({questions,users, authedUser}) => {
     questionIds: Object.keys(questions)
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
     answeredQuestions,
-    unansweredQuestions
+    unansweredQuestions : unansweredQuestions.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 }}
 
 export default connect(mapStateToProps)(QuestionsList)
