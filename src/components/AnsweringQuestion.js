@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Image, Card, Button, CardColumns, Container, Form} from 'react-bootstrap'
+import {Image, Card, Button, CardColumns, Form} from 'react-bootstrap'
 import {formatQuestion} from '../utils/helper'
 import Navbar from './Navbar'
 import {handleAnswer} from '../actions/questions'
 import { Redirect } from 'react-router-dom'
-import { Radio, RadioGroup} from 'react-radio-group'
 import Page404 from './Page404'
 
 class AnsweringQuestion extends Component {
