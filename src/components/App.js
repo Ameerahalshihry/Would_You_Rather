@@ -25,15 +25,16 @@ class App extends Component {
             :
             <React.Fragment>
         <Route exact path="/" component={QuestionsList}/>
-        <Route  path="/newquestion" component={NewQuestion}/>
+        <Route  path="/add" component={NewQuestion}/>
         <Route  path="/leaderboard" component={LeaderBoard}/>
         <Route exact path="/questions/:id/results" component={QuestionPollResults}/>
         <Route exact path="/questions/:id" component={AnsweringQuestion}/>
         <Route  path="/logout" component={LogOut}/>
         </React.Fragment>
         }
-        <Route component={Page404}/>
-        <Redirect from='*' to="/error" />
+        <LogIn />
+        {/* <Route component={Page404}/>
+        <Redirect from='*' to="/error" /> */}
           </Switch>
     </BrowserRouter>
     )

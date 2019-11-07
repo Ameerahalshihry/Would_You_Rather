@@ -78,8 +78,14 @@ class QuestionPollResults extends Component {
 }
 
 const mapStateToProps = ({authedUser, questions, users}, ownProps) => {
-    const questionId = ownProps.history.location.state.id
-    const question = questions[questionId]
+    // const questionId = ownProps.history.location.state.id
+    const path = ownProps.history.location.pathname
+    console.log(path);
+    const  splitUrl = path.split('/');
+    console.log(splitUrl[2]);
+    const qid = splitUrl[2]
+
+    const question = questions[qid]
     
     return {
         questionDetails: formatQuestion(question, users[question.author], authedUser),

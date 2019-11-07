@@ -44,7 +44,7 @@ class AnsweringQuestion extends Component {
             return <Page404/>
         }
         if (this.state.isAnswered){
-            return <Redirect to='/'/>
+            return <Redirect to={`/questions/${qid}/results`} />
         } 
         const question = questions[qid]
         const author=users[question.author]       

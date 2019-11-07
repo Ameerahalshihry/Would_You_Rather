@@ -25,7 +25,7 @@ class Navbar extends Component {
                         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item" id='newquestion'>
-                        <Link className="nav-link" to="/newquestion">New Question</Link>
+                        <Link className="nav-link" to="/add">New Question</Link>
                     </li>
                     <li className="nav-item" id='leaderboard'>
                         <Link className="nav-link" to="/leaderboard">Leader Board</Link>
